@@ -25,10 +25,6 @@
 // -------------- Structure (Principal) ----------------
 typedef struct s_stack
 {
-	int	*stack;
-	int	size;
-	int	max_size;
-	int	middle;
 }	t_stack;
 
 #endif

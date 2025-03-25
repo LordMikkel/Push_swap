@@ -16,11 +16,8 @@ int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	char	*spllitted;
 
 	if (ac == 1)
 		return (1);
-	if (ac < 1)
-		ft_error();
 	return (0);
 }
