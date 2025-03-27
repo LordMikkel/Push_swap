@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 16:22:48 by migarrid          #+#    #+#              #
-#    Updated: 2025/03/20 00:33:53 by migarrid         ###   ########.fr        #
+#    Updated: 2025/03/27 01:59:08 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,12 @@ PRINTF =	printf
 RM = 		rm -f
 
 # Directorios
-INCLUDE_DIR =		./includes
-LIB_DIR =			./lib
-OBJ_DIR =			./obj
-SRC_DIR =			./src
-SRC_BONUS_DIR =		./src/bonus
-CHECK_DIR =			./checker
+INCLUDE_DIR =		includes
+LIB_DIR =			lib
+OBJ_DIR =			obj
+SRC_DIR =			src
+SRC_BONUS_DIR =		src/bonus
+CHECK_DIR =			checker
 
 # Colores
 DEFAULT =	\033[0;39m
@@ -49,19 +49,14 @@ SRC_COUNT := 0
 SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
 
 # Archivos fuente obligatorios
-SRCS =	#push_swap.c \
-		#.c \
+SRCS =	push_swap.c \
+		ft_exit_error_free.c \
+		ft_args_check.c \
 		#checker_bonus.c \
 
 # Objetos obligatorios
-OBJS = 			${addprefix ${OBJ_DIR}, $(SRCS:.c=.o)}
-OBJS_BONUS =	${addprefix ${OBJ_DIR}, ${SRCS_BONUS:.c=.o}}
-
-# Regla para compilar archivos .c a .o con barra de progreso
-${OBJ_DIR}%.o: ${SRC_DIR}%.c push_swap.h Makefile
-	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
-	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
-	@$(CC) $(CFLAGS) -I. -c -o $@ $<
+OBJS = 			$(SRCS:%.c=$(OBJ_DIR)/%.o)
+#OBJS_BONUS =	$(SRCS_BONUS:%.c=$(OBJ_DIR)/%.o)
 
 # Crear la carpeta obj si no existe
 ${OBJS}: | ${OBJ_DIR}
@@ -69,6 +64,12 @@ ${OBJS}: | ${OBJ_DIR}
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 #	@mkdir -p ${OBJ_DIR}/bonus
+
+# Regla para compilar archivos .c a .o con barra de progreso
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | $(OBJ_DIR)
+	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
+	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
+	@$(CC) $(CFLAGS) -I. -c -o $@ $<
 
 # Regla principal: compilar la biblioteca
 all: $(NAME)
@@ -111,7 +112,7 @@ testbonus: $(NAME) main.c
 clean:
 	@$(PRINTF) "$(CYAN)Cleaning up object files...$(DEFAULT)\n"
 	@make clean -C $(LIB_DIR)
-	@$(RM) -r $(OBJ_DIR)
+	@$(RM) -rf $(OBJ_DIR)
 	@$(RM) $(OBJS)
 
 # Limpiar todo (objetos + biblioteca)

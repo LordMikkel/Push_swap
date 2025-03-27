@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 18:34:17 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/26 18:34:28 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/03/26 23:19:47 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ void	ft_free_all_stacks(t_stack *stack_a, t_stack *stack_b)
 		free(stack_b->stack);
 		free(stack_b);
 	}
-}
-
-void	ft_exit(t_stack *stack_a, t_stack *stack_b)
-{
-	ft_free_all_stacks(stack_a, stack_b);
-	exit(EXIT_FAILURE);
 }
 
 void	ft_error(char **splitted, t_stack *stack_a, t_stack *stack_b)
