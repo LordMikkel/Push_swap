@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:21:58 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/29 02:56:46 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/03/29 18:55:08 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_stack
  *	Parser
  */
 
-void	ft_args_check(int ac, char **av);
+int		ft_args_check(int ac, char **av);
 char	**ft_args_process(int ac, char **av, t_stack *stack_a);
 int		*ft_args_parser(char **splitted, t_stack *stack_a);
 
@@ -42,17 +42,21 @@ int		*ft_args_parser(char **splitted, t_stack *stack_a);
  *	Algorithm
  */
 
+void	ft_init_sort(t_stack *stack_a, t_stack *stack_b);
+
 /*
  *	Sort Utils
  */
+
+int		ft_is_sorted(t_stack *stack_a);
 
 /*
  *	Exit Utils
  */
 
-void	ft_exit(t_stack *stack_a, t_stack *stack_b);
-void	ft_error(char **splitted, t_stack *stack_a, t_stack *stack_b);
+void	ft_error(t_stack *stack_a, t_stack *stack_b);
 void	ft_free_all_stacks(t_stack *stack_a, t_stack *stack_b);
+void	ft_free_splitted(char **splitted);
 
 /*
  *	Instructions

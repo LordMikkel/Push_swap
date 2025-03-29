@@ -6,24 +6,32 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 01:15:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/29 03:21:20 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:04:28 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static char	*ft_strjoin_free(char *s1, char *s2)
+static char	*ft_strjoin_space_free(char *s1, char *s2)
 {
-	char	*tmp;
+	char	*t1;
+	char	*t2;
 
-	tmp = ft_strjoin(s1, s2);
-	if (!tmp)
+	t1 = ft_strjoin(s1, s2);
+	if (!t1)
 	{
 		free(s1);
 		return (NULL);
 	}
 	free(s1);
-	return (tmp);
+	t2 = ft_strjoin(t1, " ");
+	if (!t2)
+	{
+		free(t1);
+		return (NULL);
+	}
+	free(t1);
+	return (t2);
 }
 
 static int	ft_init_array_size(char **splitted)
@@ -43,21 +51,22 @@ char	**ft_args_process(int ac, char **av, t_stack *stack_a)
 	char	**splitted;
 
 	i = 1;
-	args = ft_calloc(1, sizeof(char));
+	args = ft_strdup(" ");
 	if (!args)
 		return (NULL);
 	while (i < ac)
 	{
-		args = ft_strjoin_free(args, av[i]);
+		args = ft_strjoin_space_free(args, av[i]);
 		if (!args)
 			return (NULL);
 		i++;
 	}
 	splitted = ft_split(args, ' ');
 	free(args);
+	i = 0;
 	if (!splitted)
 		return (NULL);
-	stack_a->size = ft_intit_array_size(splitted);
-	stack_a->max_size = ft_intit_array_size(splitted);
+	stack_a->size = ft_init_array_size(splitted);
+	stack_a->max_size = ft_init_array_size(splitted);
 	return (splitted);
 }
