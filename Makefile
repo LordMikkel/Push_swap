@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 16:22:48 by migarrid          #+#    #+#              #
-#    Updated: 2025/03/29 03:12:15 by migarrid         ###   ########.fr        #
+#    Updated: 2025/03/29 20:59:05 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRCS =	push_swap.c \
 		ft_args_check.c \
 		ft_args_process.c \
 		ft_args_parser.c \
+		ft_sort_utils.c \
 		#checker_bonus.c \
 
 # Objetos obligatorios
