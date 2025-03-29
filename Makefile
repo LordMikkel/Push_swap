@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 16:22:48 by migarrid          #+#    #+#              #
-#    Updated: 2025/03/27 01:59:08 by migarrid         ###   ########.fr        #
+#    Updated: 2025/03/29 03:12:15 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,8 @@ SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
 SRCS =	push_swap.c \
 		ft_exit_error_free.c \
 		ft_args_check.c \
+		ft_args_process.c \
+		ft_args_parser.c \
 		#checker_bonus.c \
 
 # Objetos obligatorios
@@ -119,7 +121,7 @@ clean:
 fclean: clean
 	@make fclean -C $(LIB_DIR)
 	@$(RM) $(NAME)
-	@${RM} ${BONUS_NAME}
+#	@${RM} ${BONUS_NAME}
 	@$(PRINTF) "$(CYAN)Removed $(NAME)$(DEFAULT)\n"
 
 # Recompilar todo desde cero sin bonus
