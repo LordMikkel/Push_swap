@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:21:58 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/27 01:59:55 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/03/29 02:56:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_stack
  */
 
 void	ft_args_check(int ac, char **av);
-int		*ft_args_parser(char **splitted, t_stack *stack);
-char	**ft_args_process(int ac, char **av, t_stack *stack);
+char	**ft_args_process(int ac, char **av, t_stack *stack_a);
+int		*ft_args_parser(char **splitted, t_stack *stack_a);
 
 /*
  *	Algorithm
