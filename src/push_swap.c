@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 00:38:42 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/29 21:30:05 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/03/29 21:32:06 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	main(int ac, char **av)
 		ft_error (stack_a, stack_b);
 	stack_b->size = 0;
 	if (!ft_is_sorted(stack_a))
-		//ft_init_sort(stack_a, stack_b);
+		ft_init_sort(stack_a, stack_b);
 	return (ft_free_all_stacks(stack_a, stack_b), 0);
 }
