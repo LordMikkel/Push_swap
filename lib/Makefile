@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 19:51:37 by migarrid          #+#    #+#              #
-#    Updated: 2025/03/29 18:41:27 by migarrid         ###   ########.fr        #
+#    Updated: 2025/04/01 20:45:30 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS =	libft/ft_isalpha.c \
 		libft/ft_tolower.c \
 		libft/ft_strchr.c \
 		libft/ft_strrchr.c \
+		libft/ft_strcmp.c \
 		libft/ft_strncmp.c \
 		libft/ft_memchr.c \
 		libft/ft_memcmp.c \

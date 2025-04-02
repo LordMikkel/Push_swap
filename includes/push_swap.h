@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:21:58 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/29 18:55:08 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:57:39 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ void	ft_free_splitted(char **splitted);
 /*
  *	Instructions
  */
+
+void	ft_print_instructions(char *action);
+void	ft_do_swap(t_stack *stack, char c);
+void	ft_do_rotate(t_stack *stack, char c);
+void	ft_do_reverse_rotate(t_stack *stack, char c);
+void	ft_do_pa(t_stack *stack_a, t_stack *stack_b);
+void	ft_do_pb(t_stack *stack_a, t_stack *stack_b);
 
 // -------------- Bonus (Checker) ---------------
 
