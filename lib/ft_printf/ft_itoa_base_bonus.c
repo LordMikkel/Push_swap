@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:31:08 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/18 15:27:01 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/03 20:02:45 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	is_valid_base(char *base)
 	int	j;
 
 	i = 0;
+	if (base == NULL)
+		return (0);
 	while (base[i] != '\0')
 	{
 		if (base[i] == '+' || base[i] == '-' || base[i] < 32 || base[i] > 126)

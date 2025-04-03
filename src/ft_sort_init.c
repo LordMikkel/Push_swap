@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 18:47:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/02 17:59:31 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/03 02:37:48 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ static void	ft_sort_three(t_stack *stack)
 	}
 }
 
-/*static void	ft_sort_five(t_stack *stack_a, t_stack *stack_b)
+static void	ft_sort_five(t_stack *stack_a, t_stack *stack_b)
 {
-}*/
+
+}
 
 void	ft_init_sort(t_stack *stack_a, t_stack *stack_b)
 {
