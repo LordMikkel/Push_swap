@@ -39,12 +39,13 @@ static int	ft_init_array_size(char **splitted)
 	int	size;
 
 	size = 0;
+
 	while (splitted[size])
 		size++;
 	return (size);
 }
 
-char	**ft_args_process(int ac, char **av, t_stack *stack_a)
+char	**ft_args_split(int ac, char **av, t_stack *stack_a)
 {
 	int		i;
 	char	*args;
@@ -67,6 +68,5 @@ char	**ft_args_process(int ac, char **av, t_stack *stack_a)
 	if (!splitted)
 		return (NULL);
 	stack_a->size = ft_init_array_size(splitted);
-	stack_a->max_size = ft_init_array_size(splitted);
 	return (splitted);
 }

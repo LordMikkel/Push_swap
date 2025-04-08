@@ -54,8 +54,8 @@ SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
 SRCS =	push_swap.c \
 		ft_error_free.c \
 		ft_args_check.c \
-		ft_args_process.c \
-		ft_args_parser.c \
+		ft_args_split.c \
+		ft_args_array.c \
 		ft_sort_init.c \
 		ft_sort_algorithm.c \
 		ft_sort_check.c \

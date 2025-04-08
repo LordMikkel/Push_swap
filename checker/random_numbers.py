@@ -14,8 +14,8 @@ import random
 import sys
 
 # Obtener el valor mínimo y máximo de un entero
-int_min = -2_147_483_648
-int_max = 2_147_483_647
+int_min = -2**31
+int_max = 2**31-1
 
 def main():
 	# Obtener la cantidad de números desde el primer argumento de línea de comandos
@@ -25,6 +25,4 @@ def main():
 	# Imprimir los números generados sin comas
 	print(" ".join(map(str, numeros_aleatorios)))
 
-# Ejecutar la función principal si se le llama con el mismo nombre desde la linea de comandos
-if __name__ == "__main__":
-	main()
+main()
