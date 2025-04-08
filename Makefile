@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 16:22:48 by migarrid          #+#    #+#              #
-#    Updated: 2025/04/06 19:27:56 by migarrid         ###   ########.fr        #
+#    Updated: 2025/04/08 15:27:03 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRCS =	push_swap.c \
 		ft_args_process.c \
 		ft_args_parser.c \
 		ft_sort_init.c \
+		ft_sort_algorithm.c \
 		ft_sort_check.c \
 		ft_sort_utils.c \
 		ft_instructions.c \
@@ -128,6 +129,111 @@ test5: $(NAME)
 	@$(PRINTF) "$(CYAN)🔧 Compilando tests...$(DEFAULT)\n"
 	@$(PRINTF) "$(DEFAULT)🔍 Ejecutando Valgrind para verificar memoria...$(DEFAULT)\n\n"
 	@ARGS=$$(python3 $(CHECK_DIR)/random_numbers.py 5); \
+	$(PRINTF) "🔢 Input: $(MAGENTA)$$ARGS\n"; \
+	$(PRINTF) "$(DEFAULT)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap $$ARGS; \
+	$(PRINTF) "$(DEFAULT)📊 Operation count: $(YELLOW)"; \
+	./push_swap $$ARGS | wc -l; \
+	$(PRINTF) "$(DEFAULT)🧪 Checking with checker_linux:$(BLUE) "; \
+	CHECKER_OUTPUT=$$(./push_swap $$ARGS | ${CHECK_DIR}/checker_linux $$ARGS 2>&1); \
+	if [ "$$CHECKER_OUTPUT" = "OK" ]; then \
+		$(PRINTF) "$(GREEN)$$CHECKER_OUTPUT$(DEFAULT)"; \
+	else \
+		$(PRINTF) "$(RED)$$CHECKER_OUTPUT$(DEFAULT)"; \
+	fi; \
+	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
+
+test25: $(NAME)
+	@$(PRINTF) "$(CYAN)\n╔════════════════════════════════════════╗$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)║     Initializing tests for push_swap   ║$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)╚════════════════════════════════════════╝$(DEFAULT)\n\n"
+	@$(PRINTF) "$(CYAN)🔧 Compilando tests...$(DEFAULT)\n"
+	@$(PRINTF) "$(DEFAULT)🔍 Ejecutando Valgrind para verificar memoria...$(DEFAULT)\n\n"
+	@ARGS=$$(python3 $(CHECK_DIR)/random_numbers.py 25); \
+	$(PRINTF) "🔢 Input: $(MAGENTA)$$ARGS\n"; \
+	$(PRINTF) "$(DEFAULT)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap $$ARGS; \
+	$(PRINTF) "$(DEFAULT)📊 Operation count: $(YELLOW)"; \
+	./push_swap $$ARGS | wc -l; \
+	$(PRINTF) "$(DEFAULT)🧪 Checking with checker_linux:$(BLUE) "; \
+	CHECKER_OUTPUT=$$(./push_swap $$ARGS | ${CHECK_DIR}/checker_linux $$ARGS 2>&1); \
+	if [ "$$CHECKER_OUTPUT" = "OK" ]; then \
+		$(PRINTF) "$(GREEN)$$CHECKER_OUTPUT$(DEFAULT)"; \
+	else \
+		$(PRINTF) "$(RED)$$CHECKER_OUTPUT$(DEFAULT)"; \
+	fi; \
+	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
+
+test50: $(NAME)
+	@$(PRINTF) "$(CYAN)\n╔════════════════════════════════════════╗$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)║     Initializing tests for push_swap   ║$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)╚════════════════════════════════════════╝$(DEFAULT)\n\n"
+	@$(PRINTF) "$(CYAN)🔧 Compilando tests...$(DEFAULT)\n"
+	@$(PRINTF) "$(DEFAULT)🔍 Ejecutando Valgrind para verificar memoria...$(DEFAULT)\n\n"
+	@ARGS=$$(python3 $(CHECK_DIR)/random_numbers.py 50); \
+	$(PRINTF) "🔢 Input: $(MAGENTA)$$ARGS\n"; \
+	$(PRINTF) "$(DEFAULT)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap $$ARGS; \
+	$(PRINTF) "$(DEFAULT)📊 Operation count: $(YELLOW)"; \
+	./push_swap $$ARGS | wc -l; \
+	$(PRINTF) "$(DEFAULT)🧪 Checking with checker_linux:$(BLUE) "; \
+	CHECKER_OUTPUT=$$(./push_swap $$ARGS | ${CHECK_DIR}/checker_linux $$ARGS 2>&1); \
+	if [ "$$CHECKER_OUTPUT" = "OK" ]; then \
+		$(PRINTF) "$(GREEN)$$CHECKER_OUTPUT$(DEFAULT)"; \
+	else \
+		$(PRINTF) "$(RED)$$CHECKER_OUTPUT$(DEFAULT)"; \
+	fi; \
+	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
+
+test100: $(NAME)
+	@$(PRINTF) "$(CYAN)\n╔════════════════════════════════════════╗$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)║     Initializing tests for push_swap   ║$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)╚════════════════════════════════════════╝$(DEFAULT)\n\n"
+	@$(PRINTF) "$(CYAN)🔧 Compilando tests...$(DEFAULT)\n"
+	@$(PRINTF) "$(DEFAULT)🔍 Ejecutando Valgrind para verificar memoria...$(DEFAULT)\n\n"
+	@ARGS=$$(python3 $(CHECK_DIR)/random_numbers.py 100); \
+	$(PRINTF) "🔢 Input: $(MAGENTA)$$ARGS\n"; \
+	$(PRINTF) "$(DEFAULT)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap $$ARGS; \
+	$(PRINTF) "$(DEFAULT)📊 Operation count: $(YELLOW)"; \
+	./push_swap $$ARGS | wc -l; \
+	$(PRINTF) "$(DEFAULT)🧪 Checking with checker_linux:$(BLUE) "; \
+	CHECKER_OUTPUT=$$(./push_swap $$ARGS | ${CHECK_DIR}/checker_linux $$ARGS 2>&1); \
+	if [ "$$CHECKER_OUTPUT" = "OK" ]; then \
+		$(PRINTF) "$(GREEN)$$CHECKER_OUTPUT$(DEFAULT)"; \
+	else \
+		$(PRINTF) "$(RED)$$CHECKER_OUTPUT$(DEFAULT)"; \
+	fi; \
+	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
+
+test500: $(NAME)
+	@$(PRINTF) "$(CYAN)\n╔════════════════════════════════════════╗$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)║     Initializing tests for push_swap   ║$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)╚════════════════════════════════════════╝$(DEFAULT)\n\n"
+	@$(PRINTF) "$(CYAN)🔧 Compilando tests...$(DEFAULT)\n"
+	@$(PRINTF) "$(DEFAULT)🔍 Ejecutando Valgrind para verificar memoria...$(DEFAULT)\n\n"
+	@ARGS=$$(python3 $(CHECK_DIR)/random_numbers.py 500); \
+	$(PRINTF) "🔢 Input: $(MAGENTA)$$ARGS\n"; \
+	$(PRINTF) "$(DEFAULT)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap $$ARGS; \
+	$(PRINTF) "$(DEFAULT)📊 Operation count: $(YELLOW)"; \
+	./push_swap $$ARGS | wc -l; \
+	$(PRINTF) "$(DEFAULT)🧪 Checking with checker_linux:$(BLUE) "; \
+	CHECKER_OUTPUT=$$(./push_swap $$ARGS | ${CHECK_DIR}/checker_linux $$ARGS 2>&1); \
+	if [ "$$CHECKER_OUTPUT" = "OK" ]; then \
+		$(PRINTF) "$(GREEN)$$CHECKER_OUTPUT$(DEFAULT)"; \
+	else \
+		$(PRINTF) "$(RED)$$CHECKER_OUTPUT$(DEFAULT)"; \
+	fi; \
+	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
+
+test1000: $(NAME)
+	@$(PRINTF) "$(CYAN)\n╔════════════════════════════════════════╗$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)║     Initializing tests for push_swap   ║$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)╚════════════════════════════════════════╝$(DEFAULT)\n\n"
+	@$(PRINTF) "$(CYAN)🔧 Compilando tests...$(DEFAULT)\n"
+	@$(PRINTF) "$(DEFAULT)🔍 Ejecutando Valgrind para verificar memoria...$(DEFAULT)\n\n"
+	@ARGS=$$(python3 $(CHECK_DIR)/random_numbers.py 1000); \
 	$(PRINTF) "🔢 Input: $(MAGENTA)$$ARGS\n"; \
 	$(PRINTF) "$(DEFAULT)🎰 Output push_swap:$(DEFAULT)\n"; \
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap $$ARGS; \
