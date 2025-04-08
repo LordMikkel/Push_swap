@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:21:58 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/06 18:26:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:40:49 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		*ft_args_parser(char **splitted, t_stack *stack_a);
  */
 
 void	ft_init_sort(t_stack *stack_a, t_stack *stack_b);
+void	ft_chunk_sort(t_stack *stack_a, t_stack *stack_b, int size);
 
 /*
  *	Sort Utils
