@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:21:58 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/02 17:57:39 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/06 18:26:11 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	ft_init_sort(t_stack *stack_a, t_stack *stack_b);
  */
 
 int		ft_is_sorted(t_stack *stack_a);
+int		ft_find_min_num(t_stack *stack);
+int		ft_find_max_num(t_stack *stack);
+void	ft_move_min_num_to_top(t_stack *stack, char c);
+void	ft_move_max_num_to_top(t_stack *stack, char c);
 
 /*
  *	Exit Utils
