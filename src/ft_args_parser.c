@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 02:35:24 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/29 18:42:02 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/06 22:40:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	*ft_args_parser(char **splitted, t_stack *stack_a)
 	int		*array;
 
 	i = 0;
-	array = ft_calloc((stack_a->size), sizeof(int));
+	array = ft_calloc((stack_a->size + 1), sizeof(int));
 	if (!array)
 		return (NULL);
 	while (splitted[i])
