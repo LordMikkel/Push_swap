@@ -24,14 +24,14 @@ int	main(int ac, char **av)
 	stack_b = ft_calloc(1, sizeof(t_stack));
 	if (!stack_a || !stack_b)
 		ft_error(stack_a, stack_b);
-	splitted = ft_args_process(ac, av, stack_a);
+	splitted = ft_args_split(ac, av, stack_a);
 	if (!splitted)
 		ft_error(stack_a, stack_b);
-	stack_a->stack = ft_args_parser(splitted, stack_a);
+	stack_a->stack = ft_args_array(splitted, stack_a);
 	ft_free_splitted(splitted);
 	if (!stack_a->stack)
 		ft_error(stack_a, stack_b);
-	stack_b->stack = ft_calloc(stack_a->size, sizeof(int));
+	stack_b->stack = ft_calloc(stack_a->size + 1, sizeof(int));
 	if (!stack_b->stack)
 		ft_error (stack_a, stack_b);
 	stack_b->size = 0;

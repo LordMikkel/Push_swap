@@ -25,7 +25,6 @@ typedef struct s_stack
 {
 	int	*stack;
 	int	size;
-	int	max_size;
 	int	middle;
 }	t_stack;
 
@@ -35,15 +34,16 @@ typedef struct s_stack
  */
 
 int		ft_args_check(int ac, char **av);
-char	**ft_args_process(int ac, char **av, t_stack *stack_a);
-int		*ft_args_parser(char **splitted, t_stack *stack_a);
+char	**ft_args_split(int ac, char **av, t_stack *stack_a);
+int		*ft_args_array(char **splitted, t_stack *stack_a);
 
 /*
  *	Algorithm
  */
 
 void	ft_init_sort(t_stack *stack_a, t_stack *stack_b);
-void	ft_chunk_sort(t_stack *stack_a, t_stack *stack_b, int size);
+void	ft_insert_sort(t_stack *stack_a, t_stack *stack_b);
+//void	ft_chunk_sort(t_stack *stack_a, t_stack *stack_b, int size);
 
 /*
  *	Sort Utils

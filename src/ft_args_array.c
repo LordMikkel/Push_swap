@@ -32,7 +32,7 @@ static int	ft_is_duplicated(int *array, int size)
 	return (0);
 }
 
-int	*ft_args_parser(char **splitted, t_stack *stack_a)
+int	*ft_args_array(char **splitted, t_stack *stack_a)
 {
 	int		i;
 	long	num;
