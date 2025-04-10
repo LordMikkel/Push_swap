@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 21:44:33 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/10 21:48:47 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/10 23:00:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,23 @@ static void	ft_merge_chunks_b_to_a(t_stack *stack_a, t_stack *stack_b)
 void	ft_chunk_sort(t_stack *stack_a, t_stack *stack_b, int chunk_size)
 {
 	int	index;
-	int	min_num;
+	int	min_x_piv_up;
 	int	elements_processed;
 
 	while (stack_a->size)
 	{
 		elements_processed = 0;
-		min_num = ft_find_min_num(stack_a);
+		min_x_piv_up = ft_find_min_num(stack_a);
 		while (elements_processed++ < chunk_size)
 		{
-			min_num = ft_find_next_min_num(stack_a, min_num);
+			min_x_piv_up = ft_find_next_min_num(stack_a, min_x_piv_up);
 			if (elements_processed == chunk_size / 2)
-				stack_a->pivot = min_num;
+				stack_a->pivot = min_x_piv_up;
 		}
 		elements_processed = 0;
 		while (elements_processed++ < chunk_size)
 		{
-			index = ft_get_first_smaller_index(stack_a, min_num);
+			index = ft_get_first_smaller_index(stack_a, min_x_piv_up);
 			ft_move_num_to_top(stack_a, stack_a->stack[index], 'a');
 			ft_do_pb(stack_a, stack_b);
 			if (stack_b->stack[0] < stack_a->pivot)

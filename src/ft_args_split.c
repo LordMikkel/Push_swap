@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_args_process.c                                  :+:      :+:    :+:   */
+/*   ft_args_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 01:15:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/29 16:04:28 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/10 23:01:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static int	ft_init_array_size(char **splitted)
 	int	size;
 
 	size = 0;
-
 	while (splitted[size])
 		size++;
 	return (size);

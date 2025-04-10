@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 18:47:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/10 21:49:48 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/10 23:01:19 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ static void	ft_sort_five(t_stack *stack_a, t_stack *stack_b)
 
 void	ft_init_sort(t_stack *stack_a, t_stack *stack_b)
 {
+	int	chunk_size;
+
 	if (stack_a->size == 2)
 		ft_sort_two(stack_a);
 	else if (stack_a->size == 3)
@@ -68,9 +70,10 @@ void	ft_init_sort(t_stack *stack_a, t_stack *stack_b)
 		ft_sort_four(stack_a, stack_b);
 	else if (stack_a->size == 5)
 		ft_sort_five(stack_a, stack_b);
-	else if (stack_a->size <= 120)
-		ft_chunk_sort(stack_a, stack_b, 18);
 	else
-		ft_chunk_sort(stack_a, stack_b, 50);
+	{
+		chunk_size = ft_get_optimal_chunk_size(stack_a->size);
+		ft_chunk_sort(stack_a, stack_b, chunk_size);
+	}
 	ft_print_instructions(NULL);
 }
