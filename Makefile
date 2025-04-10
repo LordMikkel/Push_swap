@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 16:22:48 by migarrid          #+#    #+#              #
-#    Updated: 2025/04/08 15:27:03 by migarrid         ###   ########.fr        #
+#    Updated: 2025/04/10 20:47:49 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,10 +59,10 @@ SRCS =	push_swap.c \
 		ft_sort_init.c \
 		ft_sort_algorithm.c \
 		ft_sort_check.c \
+		ft_sort_helper.c \
 		ft_sort_utils.c \
 		ft_instructions.c \
 		ft_instructions_printer.c \
-		#ft_sort_algorithm \
 		#checker_bonus.c \
 
 # Objetos obligatorios

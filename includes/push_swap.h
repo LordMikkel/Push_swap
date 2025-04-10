@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:21:58 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/08 15:40:49 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/10 21:24:23 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_stack
 {
 	int	*stack;
 	int	size;
-	int	middle;
+	int	pivot;
 }	t_stack;
 
 // ----------- Principal (Algortimo) ------------
@@ -42,18 +42,22 @@ int		*ft_args_array(char **splitted, t_stack *stack_a);
  */
 
 void	ft_init_sort(t_stack *stack_a, t_stack *stack_b);
-void	ft_insert_sort(t_stack *stack_a, t_stack *stack_b);
-//void	ft_chunk_sort(t_stack *stack_a, t_stack *stack_b, int size);
+void	ft_chunk_sort(t_stack *stack_a, t_stack *stack_b, int chunk_size);
 
 /*
- *	Sort Utils
+ *	Sort Utils and helpers
  */
 
 int		ft_is_sorted(t_stack *stack_a);
 int		ft_find_min_num(t_stack *stack);
 int		ft_find_max_num(t_stack *stack);
+int		ft_get_index_num(t_stack *stack, int num);
+int		ft_find_next_min_num(t_stack *stack, int min);
+int		ft_find_next_max_num(t_stack *stack, int max);
 void	ft_move_min_num_to_top(t_stack *stack, char c);
 void	ft_move_max_num_to_top(t_stack *stack, char c);
+void	ft_move_num_to_top(t_stack *stack, int num, char c);
+void	ft_move_top_and_push_to_a(t_stack *a, t_stack *b, int first, int sec);
 
 /*
  *	Exit Utils
