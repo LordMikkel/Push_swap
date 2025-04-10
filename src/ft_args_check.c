@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 18:38:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/29 16:12:32 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/11 00:51:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	ft_args_check(int ac, char **av)
 	{
 		if (av[i][0] == '\0' || ft_is_only_space(av[i]))
 			return (0);
-		ft_chars_valid(av[i]);
+		if (!ft_chars_valid(av[i]))
+			return (0);
 		i++;
 	}
 	return (1);
