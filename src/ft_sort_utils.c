@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 14:25:22 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/10 21:24:05 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/10 21:49:39 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,3 @@ void	ft_move_max_num_to_top(t_stack *stack, char c)
 			ft_do_reverse_rotate(stack, c);
 	}
 }
-
