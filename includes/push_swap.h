@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:21:58 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/10 21:24:23 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/10 22:44:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_chunk_sort(t_stack *stack_a, t_stack *stack_b, int chunk_size);
  */
 
 int		ft_is_sorted(t_stack *stack_a);
+int		ft_get_optimal_chunk_size(int total);
 int		ft_find_min_num(t_stack *stack);
 int		ft_find_max_num(t_stack *stack);
 int		ft_get_index_num(t_stack *stack, int num);

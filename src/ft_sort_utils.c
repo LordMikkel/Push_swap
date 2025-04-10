@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 14:25:22 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/10 21:49:39 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/10 23:00:23 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,17 @@ void	ft_move_max_num_to_top(t_stack *stack, char c)
 		while (stack->stack[0] != max)
 			ft_do_reverse_rotate(stack, c);
 	}
+}
+
+int	ft_get_optimal_chunk_size(int total)
+{
+	int	chunk_size;
+
+	if (total <= 10)
+		chunk_size = total;
+	else if (total <= 100)
+		chunk_size = total / 5;
+	else
+		chunk_size = total / 10;
+	return (chunk_size);
 }
