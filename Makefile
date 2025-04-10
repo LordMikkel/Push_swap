@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 16:22:48 by migarrid          #+#    #+#              #
-#    Updated: 2025/04/10 22:46:23 by migarrid         ###   ########.fr        #
+#    Updated: 2025/04/11 01:43:03 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,14 +42,6 @@ RED =		\033[0;31m
 # Variable
 ARGS = ${CHECK_DIR}/python3 random_numbers.py
 
-# Variables de progreso
-SRC_COUNT_TOT := $(shell echo -n $(SRCS) | wc -w)
-ifeq ($(shell test $(SRC_COUNT_TOT) -le 0; echo $$?),0)
-	SRC_COUNT_TOT := $(shell echo -n $(SRCS) | wc -w)
-endif
-SRC_COUNT := 0
-SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
-
 # Archivos fuente obligatorios
 SRCS =	push_swap.c \
 		ft_error_free.c \
@@ -65,22 +57,39 @@ SRCS =	push_swap.c \
 		ft_instructions_printer.c \
 		#checker_bonus.c \
 
+# Variables de progreso
+SRC_COUNT_TOT := $(shell echo -n $(SRCS) | wc -w)
+ifeq ($(shell test $(SRC_COUNT_TOT) -le 0; echo $$?),0)
+	SRC_COUNT_TOT := $(shell echo -n $(SRCS) | wc -w)
+endif
+SRC_COUNT := 0
+SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
+
+BONUS_COUNT_TOT := $(shell echo -n $(BONUS_SRCS) | wc -w)
+ifeq ($(shell test $(BONUS_COUNT_TOT) -le 0; echo $$?),0)
+	BONUS_COUNT_TOT := $(shell echo -n $(BONUS_SRCS) | wc -w)
+endif
+BONUS_COUNT := 0
+BONUS_PCT = $(shell expr 100 \* $(BONUS_COUNT) / $(BONUS_COUNT_TOT))
+
+
 # Objetos obligatorios
 OBJS = 			$(SRCS:%.c=$(OBJ_DIR)/%.o)
-#OBJS_BONUS =	$(SRCS_BONUS:%.c=$(OBJ_DIR)/%.o)
+OBJS_BONUS =	$(SRCS_BONUS:%.c=$(OBJ_DIR)/bonus%.o)
 
 # Crear la carpeta obj si no existe
 ${OBJS}: | ${OBJ_DIR}
 #${OBJS_BONUS}: | ${OBJ_DIR}
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-#	@mkdir -p ${OBJ_DIR}/bonus
+	@mkdir -p ${OBJ_DIR}/bonus
 
 # Regla para compilar archivos .c a .o con barra de progreso
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | $(OBJ_DIR)
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
 	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
 	@$(CC) $(CFLAGS) -I. -c -o $@ $<
+
 
 # Regla principal: compilar la biblioteca
 all: $(NAME)
@@ -246,6 +255,32 @@ test1000: $(NAME)
 	else \
 		$(PRINTF) "$(RED)$$CHECKER_OUTPUT$(DEFAULT)"; \
 	fi; \
+	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
+
+errors: $(NAME)
+	@$(PRINTF) "$(CYAN)\n╔════════════════════════════════════════╗$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)║     Initializing tests for push_swap   ║$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)╚════════════════════════════════════════╝$(DEFAULT)\n\n"
+	@$(PRINTF) "$(CYAN)🔧 Compilando tests...$(DEFAULT)\n"
+	@$(PRINTF) "$(DEFAULT)🔍 Ejecutando Valgrind para verificar memoria...$(DEFAULT)\n\n"
+	$(PRINTF) "$(RED)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap; \
+	$(PRINTF) "$(RED)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap '#'; \
+	$(PRINTF) "$(RED)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap 1 1; \
+	$(PRINTF) "$(RED)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap "2147483648"; \
+	$(PRINTF) "$(RED)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap "-2147483649"; \
+	$(PRINTF) "$(RED)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap "1 2 3 hola 4 5"; \
+	$(PRINTF) "$(RED)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap '1' '2' '3' ' ' '4' '5'; \
+	$(PRINTF) "$(RED)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap '42'; \
+	$(PRINTF) "$(RED)🎰 Output push_swap:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap "1 2 3"; \
 	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
 
 # Realizar test bonus
