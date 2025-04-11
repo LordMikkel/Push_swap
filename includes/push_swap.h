@@ -79,6 +79,18 @@ void	ft_do_reverse_rotate(t_stack *stack, char c);
 void	ft_do_pa(t_stack *stack_a, t_stack *stack_b);
 void	ft_do_pb(t_stack *stack_a, t_stack *stack_b);
 
+/*
+ *	Bonus
+ */
+
+void	ft_init_checker(t_stack stack_a, t_stack stack_b);
+void	ft_handle_action(char *action, t_stack *stack_a, t_stack *stack_b);
+void	ft_do_swap_bonus(t_stack *stack);
+void	ft_do_rotate_bonus(t_stack *stack);
+void	ft_do_reverse_rotate_bonus(t_stack *stack);
+void	ft_do_pa_bonus(t_stack *stack_a, t_stack *stack_b);
+void	ft_do_pb_bonus(t_stack *stack_a, t_stack *stack_b);
+
 // -------------- Bonus (Checker) ---------------
 
 #endif
