@@ -20,8 +20,11 @@ void	ft_init_checker(t_stack *stack_a, t_stack *stack_b)
 	{
 		action = get_next_line(0);
 		if (!action)
+		{
+			free(action);
 			break ;
-		ft_handle_action(action, stack_b, stack_b);
+		}
+		ft_handle_action(action, stack_a, stack_b);
 	}
 	if (!ft_is_sorted(stack_a) || stack_b->size)
 		ft_printf("KO\n");

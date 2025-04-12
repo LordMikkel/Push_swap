@@ -31,6 +31,9 @@ int	main(int ac, char **av)
 	ft_free_splitted(splitted);
 	if (!stack_a->stack)
 		ft_error(stack_a, stack_b);
+	stack_b->stack = ft_calloc(stack_a->size + 1, sizeof(int));
+	if (!stack_b->stack)
+		ft_error(stack_a, stack_b);
 	stack_b->size = 0;
 	ft_init_checker(stack_a, stack_b);
 	return (ft_free_all_stacks(stack_a, stack_b), 0);

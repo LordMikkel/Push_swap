@@ -16,12 +16,13 @@ static int	ft_handle_pushes(char *action, t_stack *stack_a, t_stack *stack_b)
 {
 	int	control;
 
-	if (!ft_strcmp(action, "pa"))
+	control = 0;
+	if (!ft_strcmp(action, "pa\n"))
 	{
 		ft_do_pa_bonus(stack_a, stack_b);
 		control = 1;
 	}
-	else if (!ft_strcmp(action, "pb"))
+	else if (!ft_strcmp(action, "pb\n"))
 	{
 		ft_do_pb_bonus(stack_a, stack_b);
 		control = 1;
@@ -33,17 +34,18 @@ static int	ft_handle_swaps(char *action, t_stack *stack_a, t_stack *stack_b)
 {
 	int	control;
 
-	if (!ft_strcmp(action, "sa"))
+	control = 0;
+	if (!ft_strcmp(action, "sa\n"))
 	{
 		ft_do_swap_bonus(stack_a);
 		control = 1;
 	}
-	else if (!ft_strcmp(action, "sb"))
+	else if (!ft_strcmp(action, "sb\n"))
 	{
 		ft_do_swap_bonus(stack_b);
 		control = 1;
 	}
-	else if (!ft_strcmp(action, "ss"))
+	else if (!ft_strcmp(action, "ss\n"))
 	{
 		ft_do_swap_bonus(stack_a);
 		ft_do_swap_bonus(stack_b);
@@ -56,17 +58,18 @@ static int	ft_handle_rotates(char *action, t_stack *stack_a, t_stack *stack_b)
 {
 	int	control;
 
-	if (!ft_strcmp(action, "ra"))
+	control = 0;
+	if (!ft_strcmp(action, "ra\n"))
 	{
 		ft_do_rotate_bonus(stack_a);
 		control = 1;
 	}
-	else if (!ft_strcmp(action, "rb"))
+	else if (!ft_strcmp(action, "rb\n"))
 	{
 		ft_do_rotate_bonus(stack_b);
 		control = 1;
 	}
-	else if (!ft_strcmp(action, "rr"))
+	else if (!ft_strcmp(action, "rr\n"))
 	{
 		ft_do_rotate_bonus(stack_a);
 		ft_do_rotate_bonus(stack_b);
@@ -80,17 +83,18 @@ static int	ft_handle_reverse_rotates(char *action,
 {
 	int	control;
 
-	if (!ft_strcmp(action, "rra"))
+	control = 0;
+	if (!ft_strcmp(action, "rra\n"))
 	{
 		ft_do_reverse_rotate_bonus(stack_a);
 		control = 1;
 	}
-	else if (!ft_strcmp(action, "rrb"))
+	else if (!ft_strcmp(action, "rrb\n"))
 	{
 		ft_do_reverse_rotate_bonus(stack_b);
 		control = 1;
 	}
-	else if (!ft_strcmp(action, "rrr"))
+	else if (!ft_strcmp(action, "rrr\n"))
 	{
 		ft_do_reverse_rotate_bonus(stack_a);
 		ft_do_reverse_rotate_bonus(stack_b);
