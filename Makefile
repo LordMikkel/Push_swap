@@ -16,7 +16,7 @@ BONUS_NAME			= checker
 
 # Compilador y opciones
 CC					= cc
-CFLAGS				= -Wall -Wextra -Werror
+CFLAGS				= -Wall -Wextra -Werror -g #-fsanitize=address
 
 # Comandos
 PRINTF				= printf
@@ -119,7 +119,7 @@ $(NAME): $(OBJS)
 	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
 # Regla para compilar el bonus
-bonus: ${BONUS_NAME}
+bonus: $(NAME) ${BONUS_NAME}
 
 $(BONUS_NAME): $(OBJS_BONUS) | $(OBJ_BONUS_DIR)
 	@make -s -C $(LIB_DIR)
@@ -300,6 +300,28 @@ errors: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap "1 2 3"; \
 	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
 
+errorsbonus: $(NAME)
+	@$(PRINTF) "$(CYAN)\n╔════════════════════════════════════════╗$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)║     Initializing tests for push_swap   ║$(DEFAULT)\n"
+	@$(PRINTF) "$(CYAN)╚════════════════════════════════════════╝$(DEFAULT)\n\n"
+	@$(PRINTF) "$(CYAN)🔧 Compilando tests...$(DEFAULT)\n"
+	@$(PRINTF) "$(DEFAULT)🔍 Ejecutando Valgrind para verificar memoria...$(DEFAULT)\n\n"
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker 'e';\
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker 1 1; \
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker "2147483648"; \
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker "-2147483649"; \
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker; \
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker '3' '2' '1';\
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker 3 2 1; \
+	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
+
 # Realizar test bonus
 testbonus: $(NAME) main.c
 	@$(PRINTF) "$(CYAN)\n╔════════════════════════════════════════╗$(DEFAULT)\n"
@@ -321,12 +343,12 @@ fclean: clean
 	@$(RM) $(NAME)
 	@${RM} ${BONUS_NAME}
 	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Project cleaned ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
+
 # Recompilar todo desde cero sin bonus
 re: 		fclean all
 
-# Recompilar todo desde cero
-rebonus: 	fclean bonus
+# Recompilar todo desde cero con bonus
+rebonus: 		fclean all bonus
 
 # Asegurar que las reglas se ejecuten como comandos del make
-.PHONY: 	all bonus test clean fclean test testbonus re rebonus
-.SILENT: all clean fclean re bonus
+.PHONY: 	all bonus test3 test5 test50 test100 test500 test1000 errrors testbonus re rebonus clean fclean
