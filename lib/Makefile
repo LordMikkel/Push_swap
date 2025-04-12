@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 19:51:37 by migarrid          #+#    #+#              #
-#    Updated: 2025/04/01 20:45:30 by migarrid         ###   ########.fr        #
+#    Updated: 2025/04/12 03:28:23 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,7 +110,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@$(PRINTF) "\r%100s\r$(GREEN)$(NAME) is up to date!$(DEFAULT)\n"
 
 # Regla para compilar archivos .c a .o con barra de progreso
 %.o: %.c libft_plus.h Makefile
@@ -120,14 +119,12 @@ $(NAME): $(OBJS)
 
 # Limpiar objetos
 clean:
-	@$(PRINTF) "$(CYAN)Cleaning up object files...$(DEFAULT)\n"
 	@$(RM) $(OBJS)
 
 # Limpiar todo (objetos + biblioteca)
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) ../$(NAME)
-	@$(PRINTF) "$(CYAN)Removed $(NAME)$(DEFAULT)\n"
 
 # Recompilar todo desde cero sin bonus
 re: fclean all

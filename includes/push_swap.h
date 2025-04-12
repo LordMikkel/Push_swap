@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:21:58 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/10 22:44:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/12 03:00:11 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_do_pb(t_stack *stack_a, t_stack *stack_b);
  *	Bonus
  */
 
-void	ft_init_checker(t_stack stack_a, t_stack stack_b);
+void	ft_init_checker(t_stack *stack_a, t_stack *stack_b);
 void	ft_handle_action(char *action, t_stack *stack_a, t_stack *stack_b);
 void	ft_do_swap_bonus(t_stack *stack);
 void	ft_do_rotate_bonus(t_stack *stack);
