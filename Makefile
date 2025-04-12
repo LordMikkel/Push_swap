@@ -6,56 +6,71 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 16:22:48 by migarrid          #+#    #+#              #
-#    Updated: 2025/04/11 01:43:03 by migarrid         ###   ########.fr        #
+#    Updated: 2025/04/12 04:07:07 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Nombre de la biblioteca
-NAME =			push_swap
-BONUS_NAME=		checker
+NAME				= push_swap
+BONUS_NAME			= checker
 
 # Compilador y opciones
-CC =		cc
-CFLAGS =	-Wall -Wextra -Werror
+CC					= cc
+CFLAGS				= -Wall -Wextra -Werror
 
 # Comandos
-PRINTF =	printf
-RM = 		rm -f
+PRINTF				= printf
+RM 					= rm -f
 
 # Directorios
-INCLUDE_DIR =		includes
-LIB_DIR =			lib
-OBJ_DIR =			obj
-SRC_DIR =			src
-SRC_BONUS_DIR =		src/bonus
-CHECK_DIR =			checker
+INCLUDE_DIR			= includes
+LIB_DIR 			= lib
+OBJ_DIR 			= obj
+OBJ_BONUS_DIR		= obj/bonus
+SRC_DIR 			= src
+SRC_BONUS_DIR		= src/bonus
+CHECK_DIR			= checking
 
 # Colores
-DEFAULT =	\033[0;39m
-GREEN =		\033[0;92m
-BLUE =		\033[0;94m
-MAGENTA =	\033[0;95m
-CYAN =		\033[0;96m
-YELLOW =	\033[0;33m
-RED =		\033[0;31m
+DEFAULT				= \033[0;39m
+GREEN 				= \033[0;92m
+BLUE 				= \033[0;94m
+MAGENTA 			= \033[0;95m
+CYAN 				= \033[0;96m
+YELLOW 				= \033[0;33m
+RED 				= \033[0;31m
+GREY 				= \033[38;5;240m
+PURPLE 				= \033[38;5;141m
+RESET 				= \033[0m
+BOLD 				= \033[1m
+CLEAR 				= \r\033[K
 
 # Variable
 ARGS = ${CHECK_DIR}/python3 random_numbers.py
 
 # Archivos fuente obligatorios
-SRCS =	push_swap.c \
-		ft_error_free.c \
-		ft_args_check.c \
-		ft_args_split.c \
-		ft_args_array.c \
-		ft_sort_init.c \
-		ft_sort_algorithm.c \
-		ft_sort_check.c \
-		ft_sort_helper.c \
-		ft_sort_utils.c \
-		ft_instructions.c \
-		ft_instructions_printer.c \
-		#checker_bonus.c \
+SRCS =				push_swap.c \
+					ft_error_free.c \
+					ft_args_check.c \
+					ft_args_split.c \
+					ft_args_array.c \
+					ft_sort_init.c \
+					ft_sort_algorithm.c \
+					ft_sort_check.c \
+					ft_sort_helper.c \
+					ft_sort_utils.c \
+					ft_instructions.c \
+					ft_instructions_printer.c \
+
+SRC_BONUS = 		checker_bonus.c \
+					ft_init_checker_bonus.c \
+					ft_handle_action_bonus.c \
+					ft_instructions_bonus.c \
+					ft_sort_check_bonus.c \
+					ft_error_free_bonus.c \
+					ft_args_check_bonus.c \
+					ft_args_split_bonus.c \
+					ft_args_array_bonus.c \
 
 # Variables de progreso
 SRC_COUNT_TOT := $(shell echo -n $(SRCS) | wc -w)
@@ -65,49 +80,51 @@ endif
 SRC_COUNT := 0
 SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
 
-BONUS_COUNT_TOT := $(shell echo -n $(BONUS_SRCS) | wc -w)
+BONUS_COUNT_TOT := $(shell echo -n $(SRC_BONUS) | wc -w)
 ifeq ($(shell test $(BONUS_COUNT_TOT) -le 0; echo $$?),0)
-	BONUS_COUNT_TOT := $(shell echo -n $(BONUS_SRCS) | wc -w)
+	BONUS_COUNT_TOT := $(shell echo -n $(SRC_BONUS) | wc -w)
 endif
 BONUS_COUNT := 0
 BONUS_PCT = $(shell expr 100 \* $(BONUS_COUNT) / $(BONUS_COUNT_TOT))
 
-
 # Objetos obligatorios
-OBJS = 			$(SRCS:%.c=$(OBJ_DIR)/%.o)
-OBJS_BONUS =	$(SRCS_BONUS:%.c=$(OBJ_DIR)/bonus%.o)
+OBJS		= $(SRCS:%.c=$(OBJ_DIR)/%.o)
+OBJS_BONUS 	= $(SRC_BONUS:%.c=$(OBJ_BONUS_DIR)/%.o)
 
 # Crear la carpeta obj si no existe
 ${OBJS}: | ${OBJ_DIR}
-#${OBJS_BONUS}: | ${OBJ_DIR}
+${OBJS_BONUS}: |  $(OBJ_DIR)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p ${OBJ_DIR}/bonus
 
 # Regla para compilar archivos .c a .o con barra de progreso
-${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | $(OBJ_DIR)
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.c ./includes/push_swap.h Makefile
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
-	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)..." "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
+	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)...\n" "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
 	@$(CC) $(CFLAGS) -I. -c -o $@ $<
 
+# Cómo cada archivo .c a .o (Obligatorio + Bonus)
+$(OBJ_BONUS_DIR)/%.o: $(SRC_BONUS_DIR)/%.c ./includes/push_swap.h Makefile
+	@$(eval BONUS_COUNT = $(shell expr $(BONUS_COUNT) + 1))
+	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(MAGENTA)$<$(DEFAULT)...\n" "" $(BONUS_COUNT) $(BONUS_COUNT_TOT) $(BONUS_PCT)
+	@$(CC) $(CFLAGS) -I. -c -o $@ $<
 
-# Regla principal: compilar la biblioteca
+# Regla principal: compilar el programa
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@make -C $(LIB_DIR)
+	@make -s -C $(LIB_DIR)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) ${LIB_DIR}/libft_plus.a
-	@$(PRINTF) "\r%100s\r$(GREEN)$(NAME) is up to date!$(DEFAULT)\n"
-
-$(BONUS_NAME): $(OBJS_BONUS)
-	@make -C $(LIB_DIR)
-	@$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(BONUS_NAME)/libft_plus.a
-	@$(PRINTF) "\r%100s\r$(MAGENTA) Bonus $(NAME) is up to date!$(DEFAULT)\n"
-	@touch .bonus
+	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
 # Regla para compilar el bonus
-bonus: .bonus
-.bonus: ${BONUS_NAME}
+bonus: ${BONUS_NAME}
+
+$(BONUS_NAME): $(OBJS_BONUS) | $(OBJ_BONUS_DIR)
+	@make -s -C $(LIB_DIR)
+	@$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(BONUS_NAME) $(LIB_DIR)/libft_plus.a
+	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${BONUS_NAME}${RESET}]: ${RED}${BOLD}${BONUS_NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
 # Realizar test
 test3: $(NAME)
@@ -293,18 +310,17 @@ testbonus: $(NAME) main.c
 
 # Limpiar objetos
 clean:
-	@$(PRINTF) "$(CYAN)Cleaning up object files...$(DEFAULT)\n"
-	@make clean -C $(LIB_DIR)
+	@make clean -s -C $(LIB_DIR)
 	@$(RM) -rf $(OBJ_DIR)
+	@printf "${CLEAR}${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Objects were cleaned ${GREEN}successfully${RESET}.\n${RESET}"
 	@$(RM) $(OBJS)
 
 # Limpiar todo (objetos + biblioteca)
 fclean: clean
-	@make fclean -C $(LIB_DIR)
+	@make fclean -s -C $(LIB_DIR)
 	@$(RM) $(NAME)
-#	@${RM} ${BONUS_NAME}
-	@$(PRINTF) "$(CYAN)Removed $(NAME)$(DEFAULT)\n"
-
+	@${RM} ${BONUS_NAME}
+	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Project cleaned ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 # Recompilar todo desde cero sin bonus
 re: 		fclean all
 
@@ -313,3 +329,4 @@ rebonus: 	fclean bonus
 
 # Asegurar que las reglas se ejecuten como comandos del make
 .PHONY: 	all bonus test clean fclean test testbonus re rebonus
+.SILENT: all clean fclean re bonus

@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_checker_bonus.c                            :+:      :+:    :+:   */
+/*   ft_sort_check_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/12 02:21:20 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/12 03:01:27 by migarrid         ###   ########.fr       */
+/*   Created: 2025/04/12 02:22:20 by migarrid          #+#    #+#             */
+/*   Updated: 2025/04/12 02:22:23 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ft_init_checker(t_stack *stack_a, t_stack *stack_b)
+int	ft_is_sorted(t_stack *stack_a)
 {
-	char	*action;
+	int	i;
 
-	while (1)
+	i = 0;
+	while (i < stack_a->size - 1)
 	{
-		action = get_next_line(0);
-		if (!action)
-			break ;
-		ft_handle_action(action, stack_b, stack_b);
+		if (stack_a->stack[i] > stack_a->stack[i + 1])
+			return (0);
+		i++;
 	}
-	if (!ft_is_sorted(stack_a) || stack_b->size)
-		ft_printf("KO\n");
-	else
-		ft_printf("OK\n");
+	return (1);
 }

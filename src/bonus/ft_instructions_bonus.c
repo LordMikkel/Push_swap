@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_instructions_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelon      +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 18:26:08 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/11 18:26:14 by migarrid         ###   ########.fr       */
+/*   Created: 2025/04/12 02:21:07 by migarrid          #+#    #+#             */
+/*   Updated: 2025/04/12 02:21:10 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
