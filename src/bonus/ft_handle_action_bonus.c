@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 02:19:19 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/12 03:02:26 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/12 04:11:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ static int	ft_handle_rotates(char *action, t_stack *stack_a, t_stack *stack_b)
 	return (control);
 }
 
-static int	ft_handle_reverse_rotates(char *action, t_stack *stack_a, t_stack *stack_b)
+static int	ft_handle_reverse_rotates(char *action,
+	t_stack *stack_a, t_stack *stack_b)
 {
 	int	control;
 
@@ -100,8 +101,9 @@ static int	ft_handle_reverse_rotates(char *action, t_stack *stack_a, t_stack *st
 
 void	ft_handle_action(char *action, t_stack *stack_a, t_stack *stack_b)
 {
-	int control = 0;
+	int	control;
 
+	control = 0;
 	control += ft_handle_pushes(action, stack_a, stack_b);
 	control += ft_handle_swaps(action, stack_a, stack_b);
 	control += ft_handle_rotates(action, stack_a, stack_b);
