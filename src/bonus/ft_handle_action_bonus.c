@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 02:19:19 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/12 04:11:32 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/13 14:21:15 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,5 @@ void	ft_handle_action(char *action, t_stack *stack_a, t_stack *stack_b)
 	control += ft_handle_reverse_rotates(action, stack_a, stack_b);
 	free(action);
 	if (!control)
-		ft_error(stack_a, stack_b);
+		ft_error_gnl(stack_a, stack_b);
 }
