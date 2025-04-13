@@ -14,8 +14,8 @@ void PushSwap::run(const std::string &numbers) {
   std::array<char, 128> buffer;
   std::string result;
   std::string command = this->path + " " + numbers;
-  std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(command.c_str(), "r"),
-                                                pclose);
+  auto deleter = [](FILE* f) { return pclose(f); };
+std::unique_ptr<FILE, decltype(deleter)> pipe(popen(command.c_str(), "r"), deleter);
 
   if (!pipe) {
     throw std::runtime_error("popen() failed!");
