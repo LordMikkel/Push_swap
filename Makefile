@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 16:22:48 by migarrid          #+#    #+#              #
-#    Updated: 2025/04/12 04:07:07 by migarrid         ###   ########.fr        #
+#    Updated: 2025/04/13 14:57:45 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -298,9 +298,9 @@ errors: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap '42'; \
 	$(PRINTF) "$(RED)🎰 Output push_swap:$(DEFAULT)\n"; \
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap "1 2 3"; \
-	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
+	$(PRINTF) "\n$(GREEN)✅ Tests errors completados!$(DEFAULT)\n"
 
-errorsbonus: $(NAME)
+errorsbonus: $(BONUS_NAME)
 	@$(PRINTF) "$(CYAN)\n╔════════════════════════════════════════╗$(DEFAULT)\n"
 	@$(PRINTF) "$(CYAN)║     Initializing tests for push_swap   ║$(DEFAULT)\n"
 	@$(PRINTF) "$(CYAN)╚════════════════════════════════════════╝$(DEFAULT)\n\n"
@@ -320,15 +320,27 @@ errorsbonus: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker '3' '2' '1';\
 	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker 3 2 1; \
-	$(PRINTF) "\n$(GREEN)✅ Tests completados!$(DEFAULT)\n"
+	$(PRINTF) "\n$(GREEN)✅ Tests bonus errors completados!$(DEFAULT)\n"
 
 # Realizar test bonus
-testbonus: $(NAME) main.c
+testbonus: $(NAME) $(BONUS_NAME)
 	@$(PRINTF) "$(CYAN)\n╔════════════════════════════════════════╗$(DEFAULT)\n"
 	@$(PRINTF) "$(CYAN)║     Initializing tests for checker     ║$(DEFAULT)\n"
 	@$(PRINTF) "$(CYAN)╚════════════════════════════════════════╝$(DEFAULT)\n\n"
 	@$(PRINTF) "$(CYAN)🔧 Compilando tests bonus...$(DEFAULT)\n"
-	@$(PRINTF) "\n$(GREEN)✅ Tests bonus completados!$(DEFAULT)\n"
+	@$(PRINTF) "$(DEFAULT)🔍 Ejecutando Valgrind para verificar memoria...$(DEFAULT)\n\n"
+	@ARGS=$$(python3 $(CHECK_DIR)/random_numbers.py 500); \
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker "0 9 1 8 2 7 3 6 4 5"; \
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker "45 18 -4 7 15478 -1545812545"; \
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker 0 1 2; \
+	$(PRINTF) "$(RED)🎰 Output checker:$(DEFAULT)\n"; \
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker 0 9 1 8 2; \
+	$(PRINTF) "🔢 Input: $(MAGENTA)$$ARGS$(DEFAULT)\n"; \
+	./push_swap $$ARGS | valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./checker $$ARGS; \
+	$(PRINTF) "\n$(GREEN)✅ Tests bonus completados!$(DEFAULT)\n"
 
 # Limpiar objetos
 clean:
