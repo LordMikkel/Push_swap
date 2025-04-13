@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:10:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/01 20:44:59 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:47:47 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdarg.h>
 # include <stdint.h>
 # include <fcntl.h>
+# include <limits.h>
 
 // LIBFT
 
@@ -121,18 +122,10 @@ char	*ft_utoa_base(unsigned long n);
 // GET_NEXT_LINE
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1024
 # endif
 
 // ------------- Funtion (Principal) --------------
 char	*get_next_line(int fd);
-
-// -------------- Structure (Bonus) ----------------
-typedef struct s_fd
-{
-	int				fd;
-	char			*stash;
-	struct s_fd		*next;
-}	t_fd;
 
 #endif
