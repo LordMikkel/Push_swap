@@ -206,4 +206,4 @@ Validates if a list of instructions correctly sorts the stack.
 
 ---
 
-Crafted with passion by Mikel Garrido [migarrid] – because sorting should be fast, safe, and elegant. 🚀
+Crafted with passion by Mikel Garrido [migarrid] – because sorting should be fast, safe, and simple. 🚀
