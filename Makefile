@@ -363,4 +363,5 @@ re: 		fclean all
 rebonus: 		fclean all bonus
 
 # Asegurar que las reglas se ejecuten como comandos del make
-.PHONY: 	all bonus test3 test5 test50 test100 test500 test1000 errrors testbonus re rebonus clean fclean
+.PHONY: 	all bonus test3 test5 test50 test100 test500 test1000 errrors errorsbonus testbonus re rebonus clean fclean
+.DEFAULT_GOAL := all
