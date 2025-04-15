@@ -28,8 +28,13 @@ static int	ft_chars_valid(char *av)
 	{
 		if (!ft_isdigit(av[i]) && !ft_is_sign(av[i]) && av[i] != ' ')
 			return (0);
-		if (ft_is_sign(av[i]) && !ft_isdigit(av[i + 1]))
-			return (0);
+		if (ft_is_sign(av[i]))
+		{
+			if (!ft_isdigit(av[i + 1]))
+				return (0);
+			if (i > 0 && av[i - 1] != ' ')
+				return (0);
+		}
 		i++;
 	}
 	return (1);

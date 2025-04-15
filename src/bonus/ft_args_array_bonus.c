@@ -12,6 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
+
 static int	ft_is_duplicated(int *array, int size)
 {
 	int	i;

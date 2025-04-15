@@ -33,6 +33,7 @@ SRCS =	libft/ft_isalpha.c \
 		libft/ft_isdigit.c \
 		libft/ft_isalnum.c \
 		libft/ft_isascii.c \
+		libft/ft_issign.c \
 		libft/ft_isprint.c \
 		libft/ft_strlen.c \
 		libft/ft_memset.c \
