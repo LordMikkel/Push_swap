@@ -120,8 +120,7 @@ if (stack_a->stack[0] > stack_a->stack[1])
     ft_do_swap(stack_a, 'a'); // Ensure ascending order
 ```
 
-[![Algoritmo - 9 números, 3 chunks, 3 tamaños](https://via.placeholder.com/640x360.png?text=Video+de+Ejemplo)](https://github.com/LordMikkel/Push_swap/blob/main/image/Algorithm%20Example%209%20numbers%20-%203%20chunks%20-%203%20size.mp4)
-
+https://github.com/user-attachments/assets/c3a8e620-668a-4e1f-98c0-df938f504c10
 
 ## ⚡ Performance & Big O Analysis
 ### Time Complexity:
