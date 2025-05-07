@@ -193,12 +193,12 @@ make bonus     # Compile the checker program
 make testbonus # Run tests for the checker
 ```
 
-![alt text](image/output.gif)
-
 The Test Shows:
 - 🧪 **Valgrind Integration**: Full memory leak checks.
 - 📊 **Move Counter**: Validate efficiency thresholds.
 - ✅ **Checker Integration**: Auto-verify sorting correctness.
+
+![alt text](image/output.gif)
 
 ## 🧩 Bonus: checker Program
 Validates if a list of instructions correctly sorts the stack.
@@ -211,6 +211,15 @@ Validates if a list of instructions correctly sorts the stack.
 - **Leak-Free**:
   - You must use a modified get_next_line or modify your ft_error to always wait for EOF to avoid "still reachable" leaks.
   - Frees all memory before exiting.
+
+### 📚 Credits
+
+Special thanks to the following projects and resources for their help and support during the development of this project:
+
+- 🧠 [@okbrandon](https://github.com/okbrandon/push_swap) – For sharing a clean and well-structured implementation for quick-sort that helped me think through my own code organization.
+- 🧪 [@gemartin99](https://github.com/gemartin99/Push-Swap-Tester) – For providing an excellent tester, one of the best tools out there to validate and benchmark *push_swap* implementations.
+- 📖 [Jamie Robert Dawson's Medium article](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a) – For guiding how to approach the problem in a way that helps you find the solution by yourself, especially when building brute-force algorithms.
+
 
 ---
 
