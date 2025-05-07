@@ -64,7 +64,7 @@ Key Concepts:
 
 ##### 2. Moving Elements to stack_b
 ```c
-while (elements_processed++ <= chunk_size)
+while (elements_processed++ < chunk_size)
 {
     // 1. Find first element <= min_x_piv_x_up (chunk limit)
     index = ft_get_first_smaller_index(stack_a, min_x_piv_x_up);

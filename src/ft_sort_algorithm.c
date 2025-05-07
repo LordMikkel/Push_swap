@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 21:44:33 by migarrid          #+#    #+#             */
-/*   Updated: 2025/05/07 22:30:53 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/05/07 22:34:31 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	ft_chunk_sort(t_stack *stack_a, t_stack *stack_b, int chunk_size)
 			if (elements_processed == chunk_size / 2)
 				stack_a->pivot = min_x_piv_up;
 		}
-		elements_processed = 1;
-		while (elements_processed++ <= chunk_size)
+		elements_processed = 0;
+		while (elements_processed++ < chunk_size)
 		{
 			index = ft_get_first_smaller_index(stack_a, min_x_piv_up);
 			ft_move_num_to_top(stack_a, stack_a->stack[index], 'a');
