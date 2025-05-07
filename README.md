@@ -204,7 +204,6 @@ The Test Shows:
 Validates if a list of instructions correctly sorts the stack.
 
 ### Key Features:
-- **Supports All Operations**: sa, sb, pa, pb, rr, rrr, etc.
 - **Error Handling**:
   - Detects invalid operations (e.g., abc, sx).
   - Handles Ctrl+D (EOF) gracefully.
