@@ -1,10 +1,14 @@
 # 🚀 push_swap: An Efficient Sorting Solution 🔥
 
+<p align="center"> <img src="image/.score.png" alt="alt text" /> </p>
+
 ## Achievements
 - ✅ 125/100 Score (Bonus Included)
 - 🏆 Outstanding Project Recognition
 - ⚡ 600 Moves for 100 Numbers | 5200 Moves for 500 Numbers
 - 🔒 Leak-Proof | Rigorous Error Checks | Optimized Workflow
+
+<video controls src="image/500 Numbers.mp4" title="Title"></video>
 
 ## 📜 Overview
 push_swap is a sorting algorithm project that sorts integers using two stacks (stack_a and stack_b) with a limited set of operations. This implementation combines brute-force efficiency for small datasets (2-5 elements) with a chunk-optimized QuickSort for larger sets, achieving industry-grade performance while adhering to strict memory safety.
@@ -54,13 +58,13 @@ while (stack_a->size)
 ```
 
 Key Concepts:
-- min_x_piv_x_up: Represents several values the last one is the upper limit of the current chunk.
+- min_x_piv_x_up: Represents several values THE LAST ONE is the upper limit of the current chunk.
 - pivot: Divides the chunk into two halves.
 - Example: If chunk has [5, 1, 9, 3, 7], sorted would be [1, 3, 5, 7, 9]. Pivot would be 5.
 
 ##### 2. Moving Elements to stack_b
 ```c
-while (elements_processed++ < chunk_size)
+while (elements_processed++ <= chunk_size)
 {
     // 1. Find first element <= min_x_piv_x_up (chunk limit)
     index = ft_get_first_smaller_index(stack_a, min_x_piv_x_up);
@@ -69,16 +73,16 @@ while (elements_processed++ < chunk_size)
     ft_move_num_to_top(stack_a, stack_a->stack[index], 'a');
     ft_do_pb(stack_a, stack_b);
 
-    // 3. If element is LESS than pivot, rotate stack_b (rb)
-    if (stack_b->stack[0] < stack_a->pivot)
+    // 3. If element is GREATER than pivot, rotate stack_b (rb)
+    if (stack_b->stack[0] > stack_a->pivot)
         ft_do_rotate(stack_b, 'b');
 }
 ```
 
 Key Strategy:
-- Elements ≤ pivot are sent to bottom of stack_b (with rb), creating an ordered "sub-chunk"
-- Elements > pivot remain at top of stack_b
-- Result: stack_b has a layered structure with partially ordered chunks
+- Elements > pivot are sent to bottom of stack_b (with rb), creating an ordered "sub-chunk"
+- Elements < pivot remain at top of stack_b
+- Result: stack_b builds a layered structure where each chunk — and the stack as a whole — tends to position larger elements at the bottom and top, and smaller ones clustered near the middle.
 
 #### Phase 2: Intelligent Merging
 ##### 1. Finding Two Largest Elements in stack_b
@@ -115,6 +119,9 @@ Logic:
 if (stack_a->stack[0] > stack_a->stack[1])
     ft_do_swap(stack_a, 'a'); // Ensure ascending order
 ```
+
+<video controls src="image/Algorithm Example 9 numbers - 3 chunks - 3 size.mp4" title=""></video>
+
 
 ## ⚡ Performance & Big O Analysis
 ### Time Complexity:
