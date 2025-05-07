@@ -193,6 +193,8 @@ make bonus     # Compile the checker program
 make testbonus # Run tests for the checker
 ```
 
+![alt text](image/output.gif)
+
 The Test Shows:
 - 🧪 **Valgrind Integration**: Full memory leak checks.
 - 📊 **Move Counter**: Validate efficiency thresholds.
