@@ -8,7 +8,7 @@
 - ⚡ 600 Moves for 100 Numbers | 5200 Moves for 500 Numbers
 - 🔒 Leak-Proof | Rigorous Error Checks | Optimized Workflow
 
-https://user-images.githubusercontent.com/103316367/223166941-7241bbfe-ab47-43ad-abc3-97519f68176c.mp4
+https://github.com/LordMikkel/Push_swap/blob/main/image/500%20Numbers.mp4
 
 ## 📜 Overview
 push_swap is a sorting algorithm project that sorts integers using two stacks (stack_a and stack_b) with a limited set of operations. This implementation combines brute-force efficiency for small datasets (2-5 elements) with a chunk-optimized QuickSort for larger sets, achieving industry-grade performance while adhering to strict memory safety.
