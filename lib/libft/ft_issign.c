@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_issign.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelon      +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 20:55:29 by migarrid          #+#    #+#             */
-/*   Updated: 2025/04/15 20:55:31 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/05/24 00:29:15 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../libft_plus.h"
 
 int	ft_issign(char c)
 {
