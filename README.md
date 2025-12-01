@@ -137,7 +137,7 @@ https://github.com/user-attachments/assets/c3a8e620-668a-4e1f-98c0-df938f504c10
 |-----------|--------------------------|-------------|-----------------|
 | QuickSort (Ours) | ✅ High (general-purpose) | ✅ Dynamic chunking | ⭐️ Optimal |
 | Radix Sort | ❌ Limited (integer-only) | ❌ Fixed digit steps | 🟡 Moderate |
-| Turk's Algo | ❌ Niche use cases | ❌ Complex logic | 🔴 High |
+| Turk's Algo | ❌ Niche use cases | ❌ Complex logic | 🟢 High |
 | LIS | ❌ Specialized scenarios | ❌ Slow for large n | 🔴 Poor |
 
 ### Key Advantages:
